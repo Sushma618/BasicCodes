@@ -1,0 +1,21 @@
+
+class Solution {
+    // Function to return a list containing the DFS traversal of the graph.
+    public ArrayList<Integer> dfs(ArrayList<ArrayList<Integer>> adj) {
+        int n = adj.size();
+       ArrayList<Integer> result= new ArrayList<>();
+       boolean[] visited = new boolean[n];
+       recursion(result, visited, 0, adj);
+       return result;
+    }
+     void recursion(ArrayList<Integer> result, boolean[] visited, int source, ArrayList<ArrayList<Integer>> adj){
+         result.add(source);
+        visited[source]=true;
+        for(int i=0;i<adj.get(source).size();i++){
+            if(!visited[adj.get(source).get(i)]){
+                recursion(result,visited,adj.get(source).get(i),adj);
+    
+            }
+        }
+    }
+}
